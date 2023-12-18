@@ -11,17 +11,11 @@ history_dialog = Dialog(
     Window(
         Format("Запрос: {current_page}"),
         Format("{result}"),
-        StubScroll(
-            id="stub_scroll",
-            pages="pages"),
-        ScrollingGroup(NumberedPager(
-            scroll="stub_scroll"),
-            width=5,
-            height=1,
-            id="obj"),
-        Start(Const("Back to start"),
-              state=StartDialog.main,
-              id="go_to_main_window"),
+        StubScroll(id="stub_scroll", pages="pages"),
+        ScrollingGroup(
+            NumberedPager(scroll="stub_scroll"), width=5, height=1, id="obj"
+        ),
+        Start(Const("Back to start"), state=StartDialog.main, id="go_to_main_window"),
         state=HistoryState.history_window,
         getter=paging_getter,
     ),

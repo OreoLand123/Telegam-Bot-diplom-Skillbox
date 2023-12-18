@@ -13,7 +13,9 @@ from result_dialog.states import ResultDialog
 """-----------------------------------------------Getter Func--------------------------------------------------------"""
 
 
-async def get_filter_name(callback: CallbackQuery, button: Button, manager: DialogManager):
+async def get_filter_name(
+    callback: CallbackQuery, button: Button, manager: DialogManager
+):
     """
     :param callback:
     :param button:
@@ -22,10 +24,12 @@ async def get_filter_name(callback: CallbackQuery, button: Button, manager: Dial
 
     getter для получении названия фильтра
     """
-    manager.dialog_data['filter_name'] = button.widget_id
+    manager.dialog_data["filter_name"] = button.widget_id
 
 
-async def get_arg_param(callback: CallbackQuery, button: Button, manager: DialogManager):
+async def get_arg_param(
+    callback: CallbackQuery, button: Button, manager: DialogManager
+):
     """
     :param callback:
     :param button:
@@ -34,7 +38,7 @@ async def get_arg_param(callback: CallbackQuery, button: Button, manager: Dialog
 
     getter для получении названия аргумента параметра
     """
-    manager.dialog_data['arg_param'] = button.widget_id
+    manager.dialog_data["arg_param"] = button.widget_id
 
 
 async def get_param(callback: CallbackQuery, button: Button, manager: DialogManager):
@@ -46,7 +50,7 @@ async def get_param(callback: CallbackQuery, button: Button, manager: DialogMana
 
     getter для поулчения текста по фильтру в случаее если фильр costum то текст меняется
     """
-    manager.dialog_data['param'] = button.widget_id
+    manager.dialog_data["param"] = button.widget_id
     if manager.dialog_data["filter_name"] == "custom":
         manager.dialog_data["text_custom"] = "Введите старт для поля: "
     else:
@@ -56,7 +60,9 @@ async def get_param(callback: CallbackQuery, button: Button, manager: DialogMana
 """--------------------------------------------------Main func-------------------------------------------------------"""
 
 
-async def input_message_value(message: Message, message_input: MessageInput, manager: DialogManager):
+async def input_message_value(
+    message: Message, message_input: MessageInput, manager: DialogManager
+):
     """
     :param message:
     :param message_input:
@@ -78,18 +84,32 @@ async def input_message_value(message: Message, message_input: MessageInput, man
         await message.answer("Для данного поля нужно вводить число")
         await manager.switch_to(MainDialog.input_window)
         return
-    elif obj_name != "name" and manager.dialog_data["filter_name"] == "custom":  # Вводим старт при названии фильтра custom
-        manager.dialog_data["value_1"] = float(message.text)  # Записываем стартовое значение
-        await manager.switch_to(MainDialog.input_window_custom)  # Переходим к окну ввода стоп значения
+    elif (
+        obj_name != "name" and manager.dialog_data["filter_name"] == "custom"
+    ):  # Вводим старт при названии фильтра custom
+        manager.dialog_data["value_1"] = float(
+            message.text
+        )  # Записываем стартовое значение
+        await manager.switch_to(
+            MainDialog.input_window_custom
+        )  # Переходим к окну ввода стоп значения
         return
-    manager.dialog_data["value"] = float(message.text) if flag else message.text  # Записываем значение при успешной валидации
+    manager.dialog_data["value"] = (
+        float(message.text) if flag else message.text
+    )  # Записываем значение при успешной валидации
     if obj_name == "name":
-        await manager.switch_to(MainDialog.process_search_window)  # Переход на окно старта запроса
+        await manager.switch_to(
+            MainDialog.process_search_window
+        )  # Переход на окно старта запроса
         return
-    await manager.switch_to(MainDialog.input_count_window)  # Переход на окно ввода кол-во запросов
+    await manager.switch_to(
+        MainDialog.input_count_window
+    )  # Переход на окно ввода кол-во запросов
 
 
-async def input_message_value_custom(message: Message, message_input: MessageInput, manager: DialogManager):
+async def input_message_value_custom(
+    message: Message, message_input: MessageInput, manager: DialogManager
+):
     """
     :param message:
     :param message_input:
@@ -112,11 +132,18 @@ async def input_message_value_custom(message: Message, message_input: MessageInp
         await manager.switch_to(MainDialog.input_window_custom)
         return
     value_1 = manager.dialog_data["value_1"]  # Достаём значения старта
-    manager.dialog_data["value"] = (value_1, float(message.text))  # Записываем в виде tuple диапазон
-    await manager.switch_to(MainDialog.input_count_window)  # Переход на окно ввода кол-во запросов
+    manager.dialog_data["value"] = (
+        value_1,
+        float(message.text),
+    )  # Записываем в виде tuple диапазон
+    await manager.switch_to(
+        MainDialog.input_count_window
+    )  # Переход на окно ввода кол-во запросов
 
 
-async def input_message_count_value(message: Message, message_input: MessageInput, manager: DialogManager):
+async def input_message_count_value(
+    message: Message, message_input: MessageInput, manager: DialogManager
+):
     """
     :param message:
     :param message_input:
@@ -136,7 +163,9 @@ async def input_message_count_value(message: Message, message_input: MessageInpu
     await manager.next()  # Переход к следующему окну
 
 
-async def go_to_result_dialog(callback: CallbackQuery, button: Button, manager: DialogManager) -> None:
+async def go_to_result_dialog(
+    callback: CallbackQuery, button: Button, manager: DialogManager
+) -> None:
     """
     :param callback:
     :param button:
@@ -146,11 +175,19 @@ async def go_to_result_dialog(callback: CallbackQuery, button: Button, manager: 
     Переход к диалогу result_dialog и выполнения API Запроса по введённым данным
     """
     api = API()  # Инициализируем класс API
-    count_value: int = manager.dialog_data.get("count_value")  # Достаём из memorystorage кол-во запросов
+    count_value: int = manager.dialog_data.get(
+        "count_value"
+    )  # Достаём из memorystorage кол-во запросов
     value = manager.dialog_data.get("value")  # Достаём из memorystorage значения поля
-    filter_name: str = manager.dialog_data.get("filter_name")  # Достаём из memorystorage название фильтра
-    param_name: str = manager.dialog_data.get("param")  # Достаём из memorystorage название параметра
-    arg_param: str = manager.dialog_data.get("arg_param")  # Достаём из memorystorage аргумент параметра (название поля)
+    filter_name: str = manager.dialog_data.get(
+        "filter_name"
+    )  # Достаём из memorystorage название фильтра
+    param_name: str = manager.dialog_data.get(
+        "param"
+    )  # Достаём из memorystorage название параметра
+    arg_param: str = manager.dialog_data.get(
+        "arg_param"
+    )  # Достаём из memorystorage аргумент параметра (название поля)
     user_id = int(callback.from_user.id)
     data = {
         "filter_name": filter_name,
@@ -158,13 +195,15 @@ async def go_to_result_dialog(callback: CallbackQuery, button: Button, manager: 
         "arg_param": arg_param,
         "value": value,
         "count_value": count_value,
-        "user_id": user_id
+        "user_id": user_id,
     }  # Формируем словарь данных
     if arg_param == "name":  # Проверка на поиск по имени
-        result_data = api.search_obj(param_name=param_name,
-                                     search_input=value,
-                                     user_id=user_id,
-                                     filter_name=filter_name)  # Поиск по имени
+        result_data = api.search_obj(
+            param_name=param_name,
+            search_input=value,
+            user_id=user_id,
+            filter_name=filter_name,
+        )  # Поиск по имени
     else:
         result_data = api.result_request(**data)  # Фильрация по конкретному полю
     await manager.start(ResultDialog.progress)  # Запускаем состояния дял процесса

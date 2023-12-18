@@ -21,7 +21,6 @@ text = {
               URL: {url}
               Транспортное средство: {vehicles}
               """,
-
     "starship": """
                 Название: {name}
                 MGLT: {MGLT}
@@ -42,7 +41,6 @@ text = {
                 Класс корабля: {starship_class}
                 URL: {url}
                 """,
-
     "vehicles": """
                 Название: {name}"
                 Грузоподъёмность: {cargo_capacity}
@@ -61,7 +59,6 @@ text = {
                 URL: {url}
                 Класс техники: {vehicle_class}
                 """,
-
     "species": """
                Название: {name}
                Имя: {name}
@@ -79,7 +76,6 @@ text = {
                Цвет кожи: {skin_colors}
                URL: {url}
                """,
-
     "planet": """
               Климат: {climate}
               Создан в: {created}
@@ -95,9 +91,7 @@ text = {
               Местность: {terrain}
               URL: {url}
               """,
-
-    "people_json":
-        """
+    "people_json": """
         {{
             "birth_year": "{birth_year}",
             "eye_color": "{eye_color}",
@@ -117,9 +111,7 @@ text = {
             "vehicles": {vehicles}
         }}
         """,
-
-    "starship_json":
-        """
+    "starship_json": """
         {{
             "MGLT": "{MGLT}",
             "cargo_capacity": "{cargo_capacity}",
@@ -141,9 +133,7 @@ text = {
             "url": "{url}"
         }}
         """,
-
-    "vehicles_json":
-        """
+    "vehicles_json": """
         {{
             "cargo_capacity": "{cargo_capacity}",
             "consumables": "{consumables}",
@@ -163,9 +153,7 @@ text = {
             "vehicle_class": "{vehicle_class}"
         }}
         """,
-
-    "species_json":
-        """
+    "species_json": """
         {{
             "average_height": "{average_height}",
             "average_lifespan": "{average_lifespan}",
@@ -184,9 +172,7 @@ text = {
             "url": "{url}"
         }}
         """,
-
-    "planet_json":
-        """
+    "planet_json": """
         {{
             "climate": "{climate}",
             "created": "{created}",
@@ -203,12 +189,11 @@ text = {
             "terrain": "{terrain}",
             "url": "{url}"
         }}
-        """
+        """,
 }
 
 text_help = {
-    "filter":
-        """
+    "filter": """
         Фильтры бота делятся на low, height, custom
         low - Фильтр для нахождения объектов значения полей которых меньше или равны введёному вами значению
         Пример: значение поля API <= ваше значение
@@ -222,9 +207,7 @@ text_help = {
 
         Пример 2 работет при вводе стартового значения бльше конечного значения 
         """,
-
-    "param":
-        """
+    "param": """
         Объекты по которым можно фильтровать
 
         Значения объектов:
@@ -236,9 +219,7 @@ text_help = {
 
         У каждого объекта есть свои наборы полей по которым можно фильтровать
         """,
-
-    "arg_param":
-        """
+    "arg_param": """
         У каждого объекта есть своё поле фильтрации
         Так же бот принимает кол-во запрашиваемых объектов
 
@@ -261,12 +242,10 @@ text_help = {
 
         Иначе бот вернёт то кол-во объектов которе вы запросили
         """,
-
-    "value":
-        """
+    "value": """
         Бот выдаёт значения объектов в виде читаемого тектса и 
         в виде текста в формате JSON
-        """
+        """,
 }
 
 text_history = """

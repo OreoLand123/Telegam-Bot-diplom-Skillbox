@@ -12,18 +12,22 @@ start_dialog = Dialog(
     Window(
         Const("Hello"),
         Row(
-            Start(Const("Filter"),
-                  id="main",
-                  state=MainDialog.filter_window,
-                ),
-            Start(Const("Help"),
-                  id="help",
-                  state=HelpState.help_main,
-                  ),
-            Start(Const("History"),
-                  id="history",
-                  state=HistoryState.history_window,
-                  )
+            Start(
+                Const("Filter"),
+                id="main",
+                state=MainDialog.filter_window,
+            ),
+            Start(
+                Const("Help"),
+                id="help",
+                state=HelpState.help_main,
+            ),
+            Start(
+                Const("History"),
+                id="history",
+                state=HistoryState.history_window,
+            ),
         ),
         state=StartDialog.main,
-    ))
+    )
+)

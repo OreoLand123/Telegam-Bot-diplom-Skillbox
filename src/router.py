@@ -12,13 +12,15 @@ from history_dialog.dialog import history_dialog
 from model import session, User
 
 router = Router()
-router.include_routers(start_dialog, main_dialog, result_dialog, help_dialog, history_dialog)
+router.include_routers(
+    start_dialog, main_dialog, result_dialog, help_dialog, history_dialog
+)
 
 
 @router.message(Command("start"))
 async def start(message: Message, dialog_manager: DialogManager):
     user_data = User(tg_id=message.from_user.id)
-    if not session.query(User).where(User.tg_id == message.from_user.id).all()  :
+    if not session.query(User).where(User.tg_id == message.from_user.id).all():
         session.add(user_data)
         session.commit()
         session.flush()

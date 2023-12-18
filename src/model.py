@@ -21,9 +21,10 @@ class User(Base):
     tg_id = Column(Integer, nullable=False)
     date_of_register = Column(DateTime, nullable=False, default=datetime.now())
 
-    log = relationship("Log",
-                       back_populates="user",
-                       cascade="all",
+    log = relationship(
+        "Log",
+        back_populates="user",
+        cascade="all",
     )
 
     def __repr__(self):
@@ -48,9 +49,7 @@ class Log(Base):
     status_request = Column(Integer, nullable=False)
     count_obj = Column(Integer, nullable=False)
 
-    user = relationship("User",
-                        back_populates="log")
+    user = relationship("User", back_populates="log")
 
     def __repr__(self):
         return f"<Log {self.id}>"
-

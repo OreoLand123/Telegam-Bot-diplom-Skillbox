@@ -50,8 +50,8 @@ class PeopleDataCass:
             species=self.species,
             starships=self.starships,
             url=self.url,
-            vehicles=self.vehicles
-            )
+            vehicles=self.vehicles,
+        )
 
 
 @dataclass
@@ -106,8 +106,8 @@ class StarshipsDataClass:
             films=self.films,
             pilots=self.pilots,
             starship_class=self.starship_class,
-            url=self.url
-            )
+            url=self.url,
+        )
 
 
 @dataclass
@@ -158,8 +158,8 @@ class VehiclesDataClass:
             pilots=self.pilots,
             films=self.films,
             url=self.url,
-            vehicle_class=self.vehicle_class
-            )
+            vehicle_class=self.vehicle_class,
+        )
 
 
 @dataclass
@@ -208,8 +208,8 @@ class SpeciesDataClass:
             people=self.people,
             films=self.films,
             skin_colors=self.skin_colors,
-            url=self.url
-            )
+            url=self.url,
+        )
 
 
 @dataclass
@@ -256,6 +256,5 @@ class PlanetsDataClass:
             rotation_period=self.rotation_period,
             surface_water=self.surface_water,
             terrain=self.terrain,
-            url=self.url
-            )
-
+            url=self.url,
+        )
