@@ -49,4 +49,5 @@ Temporary Items
 .apdisk
 
 /venv
-/user.db
+/users.db
+/src/config.py
