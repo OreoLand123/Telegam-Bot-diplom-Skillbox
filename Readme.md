@@ -1,4 +1,4 @@
-![Logo](https://www.goodwalldecals.com/61003/star-wars-logo-sticker.jpg)
+![Logo](https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo.png)
 
 # Телеграм бот Star-Wars-Bot (Pet-Project)
 
