@@ -27,7 +27,7 @@ python3, aiogram, aiogram-dialog, request, sqlalchemy
   pip3 install -r requirements.txt
 ```
 
-Для запуска бота необходимо создать файл comfig.py в дирректории src, где необходимо указать переменную `BOT_TOKEN = "ваш токен бота"`
+Для запуска бота необходимо создать файл config.py в дирректории src, где необходимо указать переменную `BOT_TOKEN = "ваш токен бота"`
 
 Запускаем бота
 ```bash
