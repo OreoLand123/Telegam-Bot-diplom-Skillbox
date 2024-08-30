@@ -1,5 +1,6 @@
-# Телеграм бот Star-Wars-Bot
+# Телеграм бот Star-Wars-Bot (Pet-Project)
 
+Телеграмм бот по работе с API сайта Star-Wars
 
 ## Окна и диалоги
 
