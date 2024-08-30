@@ -1,6 +1,6 @@
 ![Logo](https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo.png)
 
-# Телеграм бот Star-Wars-Bot (Pet-Project)
+# Телеграм бот Star-Wars-Bot (Pet-project)
 
 Телеграмм бот по работе с API сайта Star-Wars
 
